@@ -1,4 +1,4 @@
-;; Set user information
+;; User info
 (setq user-full-name "AJ Montajes"
       user-mail-address "montajes@student.ubc.ca")
 
