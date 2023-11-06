@@ -138,8 +138,9 @@
 (global-set-key (kbd "C-x w m") 'writing-mode)
 (global-set-key (kbd "C-x w c") 'coding-mode)
 (global-set-key (kbd "C-x t DEL") 'kill-current-buffer)
-(global-set-key (kbd "s-f") 'swiper-isearch)
-(global-set-key (kbd "s-]") '+workspace-cycle)
+;; (global-set-key (kbd "s-f") 'swiper-isearch)
+(global-set-key (kbd "s-]") '+workspace:switch-next)
+;; (global-set-key (kbd "s-{}") '+workspace:switch-previous)
 
 
 ;; ;; Space leader bindings
@@ -148,19 +149,19 @@
 ;; (require 'ivy)
 
 ;; Define a global prefix map for the space key
-(defvar my-space-map (make-sparse-keymap)
-  "My custom keymap for space key prefix.")
+;; (defvar my-space-map (make-sparse-keymap)
+  ;; "My custom keymap for space key prefix.")
 
 ;; Define the desired key sequences using the new prefix map
-(evil-define-key 'normal global-map (kbd "SPC") my-space-map)
+;; (evil-define-key 'normal global-map (kbd "SPC") my-space-map)
 
-(evil-define-key 'normal my-space-map (kbd "b") #'ivy-switch-buffer)
-(evil-define-key 'normal my-space-map (kbd "f") #'find-file)
+;; (evil-define-key 'normal my-space-map (kbd "b") #'ivy-switch-buffer)
+;; (evil-define-key 'normal my-space-map (kbd "f") #'find-file)
 
 ;; For the "SPC f r" sequence, define 'f' as a prefix within the space map
-(define-prefix-command 'my-space-f-map)
-(evil-define-key 'normal my-space-map (kbd "f") 'my-space-f-map)
-(evil-define-key 'normal my-space-f-map (kbd "r") #'ivy-recentf)
+;; (define-prefix-command 'my-space-f-map)
+;; (evil-define-key 'normal my-space-map (kbd "f") 'my-space-f-map)
+;; (evil-define-key 'normal my-space-f-map (kbd "r") #'ivy-recentf)
 ;; (evil-define-key 'normal my-space-map (kbd "M-f") #'swiper)
 ;; Add more keybindings as desired, following the same pattern:
 ;; (evil-define-key 'normal my-space-map (kbd "x y") #'some-command)
