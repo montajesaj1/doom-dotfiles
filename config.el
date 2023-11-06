@@ -36,8 +36,8 @@
 (set-face-attribute 'variable-pitch nil :font "Iosevka" :weight 'light :slant 'italic)
 
 ;; Theme configuration
-(use-package gruvbox-theme)
-(setq doom-theme 'gruvbox-theme)
+(use-package gruvbox)
+(setq doom-theme 'gruvbox)
 
 ;; Doom modeline configuration
 (use-package doom-modeline
