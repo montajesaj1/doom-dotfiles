@@ -139,9 +139,10 @@
 (global-set-key (kbd "C-x w c") 'coding-mode)
 (global-set-key (kbd "C-x t DEL") 'kill-current-buffer)
 ;; (global-set-key (kbd "s-f") 'swiper-isearch)
-(global-set-key (kbd "s-]") '+workspace:switch-next)
-;; (global-set-key (kbd "s-{}") '+workspace:switch-previous)
+(global-set-key (kbd "s-]") 'evil-window-next)
+(global-set-key (kbd "s-[") 'evil-window-prev)
 
+;; (global-set-key (kbd "s-{}") '+workspace:switch-previous)
 
 ;; ;; Space leader bindings
 ;; ;; Use `ivy` for buffer and file navigation with space as a leader key in normal mode
