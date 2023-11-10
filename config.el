@@ -9,6 +9,7 @@
 (set-fringe-mode 10)
 (setq visible-bell t)
 (auto-save-mode)
+(setq default-frame-alist '((undecorated . t)))
 
 (column-number-mode)
 (global-display-line-numbers-mode t)
@@ -121,7 +122,10 @@
   (setq visual-fill-column-width 120
         visual-fill-column-center-text t)
   (setq display-line-numbers nil)
-  (load-theme 'doom-earl-grey)
+  (org-modern-mode)
+  (org-bullets-mode)
+  (+org-pretty-mode)
+  (load-theme 'doom-flatwhite)
   (justify-current-line )
   (visual-fill-column-mode 1))
 
@@ -132,7 +136,7 @@
   (setq display-line-numbers t)
   (setq visual-fill-column-width 300
         visual-fill-column-center-text t)
-  (load-theme 'zenburn)
+  (load-theme 'gruvbox-dark-medium)
   (visual-fill-column-mode nil))
 
 (global-set-key (kbd "C-x w m") 'writing-mode)
