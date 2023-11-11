@@ -16,6 +16,19 @@
 (global-set-key (kbd "C-x l") 'menu-bar--display-line-numbers-mode-relative)
 (global-set-key (kbd "C-x L") 'menu-bar--display-line-numbers-mode-absolute)
 
+(use-package marginalia)
+(marginalia-mode)
+
+(use-package vertico-posframe)
+(vertico-posframe-mode 1)
+(setq vertico-posframe-parameters
+      '((left-fringe . 8)
+        (right-fringe . 8)))
+;; (setq vertico-posframe-border-width . 10)
+(setq vertico-posframe--overlays-back nil)
+(setq vertico-posframe-poshandler #'posframe-poshandler-frame-top-center)
+
+
 ;; Disable line numbers for certain modes
 (dolist (mode '(org-mode-hook
                 term-mode-hook
