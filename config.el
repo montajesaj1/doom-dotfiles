@@ -10,6 +10,18 @@
 (setq visible-bell t)
 (auto-save-mode)
 (setq default-frame-alist '((undecorated . t)))
+(setq-default line-spacing 2)
+
+
+(modify-all-frames-parameters
+ '((right-divider-width . 40)
+   (internal-border-width . 40)))
+(dolist (face '(window-divider
+                window-divider-first-pixel
+                window-divider-last-pixel))
+  (face-spec-reset-face face)
+  (set-face-foreground face (face-attribute 'default :background)))
+(set-face-background 'fringe (face-attribute 'default :background))
 
 (column-number-mode)
 (global-display-line-numbers-mode t)
@@ -22,12 +34,11 @@
 (use-package vertico-posframe)
 (vertico-posframe-mode 1)
 (setq vertico-posframe-parameters
-      '((left-fringe . 8)
-        (right-fringe . 8)))
-;; (setq vertico-posframe-border-width . 10)
+      '((left-fringe . 10)
+        (right-fringe . 10)))
+(setq vertico-posframe-border-width 5)
 (setq vertico-posframe--overlays-back nil)
 (setq vertico-posframe-poshandler #'posframe-poshandler-frame-top-center)
-
 
 ;; Disable line numbers for certain modes
 (dolist (mode '(org-mode-hook
@@ -36,6 +47,10 @@
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
+(setq
+ org-tags-column 0
+ org-modern-horizontal-rule "──────────")
+
 ;; Org-Tufte configuration
 (use-package org-tufte
   :ensure nil
@@ -43,6 +58,10 @@
   :config
   (require 'org-tufte)
   (setq org-tufte-htmlize-code t))
+
+;; Org-Timeblock configuration
+(use-package org-timeblock)
+(use-package org-hyperscheduler)
 
 ;; Font Configuration
 (setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'medium))
@@ -96,7 +115,9 @@
 (global-set-key (kbd "C-c TAB") 'neotree-toggle)
 
 ;; Org modern mode
-(use-package org-modern)
+(use-package org-modern
+  :custom
+  (org-modern-))
 (global-set-key [f7] 'org-modern-mode)
 
 ;; CDLaTeX mode configuration
@@ -158,6 +179,8 @@
 ;; (global-set-key (kbd "s-f") 'swiper-isearch)
 (global-set-key (kbd "s-]") 'evil-window-next)
 (global-set-key (kbd "s-[") 'evil-window-prev)
+(global-set-key (kbd "s-;") 'split-window-horizontally)
+(global-set-key (kbd "s-'") 'split-window-vertically)
 
 ;; (global-set-key (kbd "s-{}") '+workspace:switch-previous)
 
@@ -184,6 +207,22 @@
 ;; Add more keybindings as desired, following the same pattern:
 ;; (evil-define-key 'normal my-space-map (kbd "x y") #'some-command)
 
+(use-package org-download
+  :after org
+  :defer nil
+  :custom
+  (org-download-method 'directory)
+  (org-download-image-dir "images")
+  (org-download-heading-lvl nil)
+  (org-download-timestamp "%Y%m%d-%H%M%S_")
+  (org-image-actual-width 500)
+  (org-download-screenshot-method "/usr/local/bin/pngpaste %s")
+  :bind
+  ("C-M-y" . org-download-screenshot)
+  :config
+  (require 'org-download))
+
+(global-set-key (kbd "s-D") 'dictionary-search)
 
 ;; Ensure Emacs is initialized properly with the given configurations
 (when (daemonp)
