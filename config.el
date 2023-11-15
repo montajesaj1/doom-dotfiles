@@ -12,10 +12,11 @@
 (setq default-frame-alist '((undecorated . t)))
 (setq-default line-spacing 2)
 
+(setq fancy-splash-image "~/Downloads/logo.png")
 
 (modify-all-frames-parameters
- '((right-divider-width . 40)
-   (internal-border-width . 40)))
+ '((right-divider-width . 7)
+   (internal-border-width . 7)))
 (dolist (face '(window-divider
                 window-divider-first-pixel
                 window-divider-last-pixel))
@@ -36,9 +37,9 @@
 (setq vertico-posframe-parameters
       '((left-fringe . 10)
         (right-fringe . 10)))
-(setq vertico-posframe-border-width 5)
+(setq vertico-posframe-border-width 2)
 (setq vertico-posframe--overlays-back nil)
-(setq vertico-posframe-poshandler #'posframe-poshandler-frame-top-center)
+(setq vertico-posframe-poshandler #'posframe-poshandler-frame-center)
 
 ;; Disable line numbers for certain modes
 (dolist (mode '(org-mode-hook
@@ -49,7 +50,8 @@
 
 (setq
  org-tags-column 0
- org-modern-horizontal-rule "──────────")
+ org-modern-horizontal-rule "──────────"
+ org-modern-block-fringe 1)
 
 ;; Org-Tufte configuration
 (use-package org-tufte
